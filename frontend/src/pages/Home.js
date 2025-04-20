@@ -311,7 +311,7 @@ const Home = () => {
   const handleBookingSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5002/api/bookings', {
+      const response = await fetch('https://tatilim32.netlify.app/api/bookings', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -407,7 +407,7 @@ const Home = () => {
   const handleComplaintSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5002/api/complaints', {
+      const response = await fetch('https://tatilim32.netlify.app/api/complaints', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -13,7 +13,7 @@ const AccommodationList = () => {
   useEffect(() => {
     const fetchAccommodations = async () => {
       try {
-        const response = await fetch('http://localhost:5002/api/hotels');
+        const response = await fetch('https://tatilim32.netlify.app/api/hotels');
         if (!response.ok) {
           throw new Error('Tatil yerleri yüklenemedi');
         }

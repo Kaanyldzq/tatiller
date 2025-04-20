@@ -28,7 +28,7 @@ function Reviews() {
 
   const fetchReviews = async () => {
     try {
-      const response = await fetch(`http://localhost:5001/api/hotels/${hotelId}/reviews`);
+      const response = await fetch(`https://tatilim32.netlify.app/api/hotels/${hotelId}/reviews`);
       if (!response.ok) {
         throw new Error('Yorumlar yüklenirken bir hata oluştu');
       }
@@ -51,7 +51,7 @@ function Reviews() {
     }
 
     try {
-      const response = await fetch(`http://localhost:5001/api/hotels/${hotelId}/reviews`, {
+      const response = await fetch(`https://tatilim32.netlify.app/api/hotels/${hotelId}/reviews`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

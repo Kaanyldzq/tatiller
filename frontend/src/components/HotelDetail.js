@@ -12,7 +12,7 @@ const HotelDetail = () => {
   useEffect(() => {
     const fetchHotel = async () => {
       try {
-        const response = await axios.get(`http://localhost:5001/api/hotels/${id}`);
+        const response = await axios.get(`https://tatilim32.netlify.app/api/hotels/${id}`);
         setHotel(response.data);
         setLoading(false);
       } catch (err) {

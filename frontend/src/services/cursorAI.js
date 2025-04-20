@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/cursor-ai';
+const API_URL = 'https://tatilim32.netlify.app/api/cursor-ai';
 
 export const syncHotelsWithCursorAI = async (hotels) => {
   try {

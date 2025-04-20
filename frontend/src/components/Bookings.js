@@ -22,7 +22,7 @@ const Bookings = () => {
   useEffect(() => {
     const fetchHotel = async () => {
       try {
-        const response = await axios.get(`http://localhost:5001/api/hotels/${hotelId}`);
+        const response = await axios.get(`https://tatilim32.netlify.app/api/hotels/${hotelId}`);
         setHotel(response.data);
         setLoading(false);
       } catch (err) {
@@ -44,7 +44,7 @@ const Bookings = () => {
 
   const checkAvailability = async () => {
     try {
-      const response = await axios.get(`http://localhost:5001/api/bookings/availability/${hotelId}`, {
+      const response = await axios.get(`https://tatilim32.netlify.app/api/bookings/availability/${hotelId}`, {
         params: {
           checkIn: formData.checkIn,
           checkOut: formData.checkOut,
@@ -72,7 +72,7 @@ const Bookings = () => {
         paymentMethod: formData.paymentMethod
       };
 
-      await axios.post('http://localhost:5001/api/bookings', bookingData);
+      await axios.post('https://tatilim32.netlify.app/api/bookings', bookingData);
       navigate('/bookings');
     } catch (err) {
       setError('Rezervasyon oluşturulamadı');

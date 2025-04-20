@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: tatilim-api
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 5002
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGODB_URI
+        sync: false # Render Dashboard'da manuel olarak ayarlanmalı
+      - key: CLIENT_URL
+        value: https://tatilim-site.netlify.app 

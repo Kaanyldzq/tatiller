@@ -96,7 +96,7 @@ function Payment() {
         })
       };
 
-      const paymentResponse = await fetch('http://localhost:5002/api/payments', {
+      const paymentResponse = await fetch('https://tatilim32.netlify.app/api/payments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ function Payment() {
         paymentId: paymentResult.paymentId
       };
 
-      const bookingResponse = await fetch('http://localhost:5002/api/bookings', {
+      const bookingResponse = await fetch('https://tatilim32.netlify.app/api/bookings', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

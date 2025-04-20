@@ -12,7 +12,7 @@ const UserBookings = () => {
     const fetchBookings = async () => {
       try {
         const userId = localStorage.getItem('userId');
-        const response = await axios.get(`http://localhost:5001/api/bookings/user/${userId}`);
+        const response = await axios.get(`https://tatilim32.netlify.app/api/bookings/user/${userId}`);
         setBookings(response.data);
         setLoading(false);
       } catch (err) {
@@ -26,7 +26,7 @@ const UserBookings = () => {
 
   const handleCancel = async (bookingId) => {
     try {
-      await axios.put(`http://localhost:5001/api/bookings/${bookingId}/cancel`);
+      await axios.put(`https://tatilim32.netlify.app/api/bookings/${bookingId}/cancel`);
       setBookings(bookings.map(booking => 
         booking.id === bookingId ? { ...booking, status: 'cancelled' } : booking
       ));

@@ -15,6 +15,7 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import StarIcon from '@mui/icons-material/Star';
+import { API_BASE_URL } from '../config';
 
 function Hotels() {
   const [hotels, setHotels] = useState([]);
@@ -29,15 +30,15 @@ function Hotels() {
 
   const fetchHotels = async () => {
     try {
-      const response = await fetch('http://localhost:5002/api/hotels');
+      const response = await fetch(`${API_BASE_URL}/hotels`);
       if (!response.ok) {
         throw new Error('Oteller yüklenirken bir hata oluştu');
       }
       const data = await response.json();
       setHotels(data);
       setLoading(false);
-    } catch (err) {
-      setError(err.message);
+    } catch (error) {
+      setError(error.message);
       setLoading(false);
     }
   };

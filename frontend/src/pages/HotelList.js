@@ -49,7 +49,7 @@ const HotelList = () => {
 
   const fetchHotels = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/hotels');
+      const response = await fetch('https://tatilim32.netlify.app/api/hotels');
       const data = await response.json();
       setHotels(data);
       setLoading(false);
@@ -74,7 +74,7 @@ const HotelList = () => {
       if (filters.maxPrice) queryParams.append('maxPrice', filters.maxPrice);
       if (filters.rating) queryParams.append('rating', filters.rating);
 
-      const response = await fetch(`http://localhost:3000/api/hotels/search?${queryParams}`);
+      const response = await fetch(`https://tatilim32.netlify.app/api/hotels/search?${queryParams}`);
       const data = await response.json();
       setHotels(data);
     } catch (error) {

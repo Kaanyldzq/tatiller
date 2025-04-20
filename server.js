@@ -14,7 +14,11 @@ const app = express();
 // .catch(err => console.error('MongoDB bağlantı hatası:', err));
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.CLIENT_URL || 'https://tatilim32.netlify.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes

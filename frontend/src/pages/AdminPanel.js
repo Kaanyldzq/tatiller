@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/AdminPanel.css';
+import { API_BASE_URL } from '../config';
 
 const AdminPanel = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const AdminPanel = () => {
 
   const fetchHotels = async () => {
     try {
-      const response = await fetch('http://localhost:5002/api/hotels');
+      const response = await fetch(`${API_BASE_URL}/hotels`);
       if (response.ok) {
         const data = await response.json();
         setHotels(data);
@@ -54,7 +55,7 @@ const AdminPanel = () => {
 
   const fetchComplaints = async () => {
     try {
-      const response = await fetch('http://localhost:5002/api/complaints');
+      const response = await fetch(`${API_BASE_URL}/complaints`);
       if (!response.ok) {
         throw new Error('Şikayetler yüklenirken bir hata oluştu');
       }
@@ -68,7 +69,7 @@ const AdminPanel = () => {
 
   const fetchCampaigns = async () => {
     try {
-      const response = await fetch('http://localhost:5002/api/campaigns');
+      const response = await fetch(`${API_BASE_URL}/campaigns`);
       const data = await response.json();
       setCampaigns(data);
     } catch (error) {
@@ -114,8 +115,8 @@ const AdminPanel = () => {
   const handleSubmit = async () => {
     try {
       const url = editingHotel 
-        ? `http://localhost:5002/api/hotels/${editingHotel.id}`
-        : 'http://localhost:5002/api/hotels';
+        ? `${API_BASE_URL}/hotels/${editingHotel.id}`
+        : `${API_BASE_URL}/hotels`;
       
       const method = editingHotel ? 'PUT' : 'POST';
       
@@ -147,7 +148,7 @@ const AdminPanel = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5002/api/hotels/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/hotels/${id}`, {
         method: 'DELETE',
       });
 
@@ -170,7 +171,7 @@ const AdminPanel = () => {
 
   const handleDeleteComplaint = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5002/api/complaints/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/complaints/${id}`, {
         method: 'DELETE',
       });
 
@@ -225,8 +226,8 @@ const AdminPanel = () => {
   const handleCampaignSubmit = async () => {
     try {
       const url = editingCampaign 
-        ? `http://localhost:5002/api/campaigns/${editingCampaign.id}`
-        : 'http://localhost:5002/api/campaigns';
+        ? `${API_BASE_URL}/campaigns/${editingCampaign.id}`
+        : `${API_BASE_URL}/campaigns`;
       
       const method = editingCampaign ? 'PUT' : 'POST';
       
@@ -262,7 +263,7 @@ const AdminPanel = () => {
     }
     
     try {
-      const response = await fetch(`http://localhost:5002/api/campaigns/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/campaigns/${id}`, {
         method: 'DELETE',
       });
 
@@ -303,7 +304,7 @@ const AdminPanel = () => {
         photos: [...(selectedHotel.photos || []), newPhoto]
       };
 
-      const response = await fetch(`http://localhost:5002/api/hotels/${selectedHotel.id}`, {
+      const response = await fetch(`${API_BASE_URL}/hotels/${selectedHotel.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -337,7 +338,7 @@ const AdminPanel = () => {
       const updatedPhotos = [...hotel.photos];
       updatedPhotos.splice(photoIndex, 1);
 
-      const response = await fetch(`http://localhost:5002/api/hotels/${hotelId}`, {
+      const response = await fetch(`${API_BASE_URL}/hotels/${hotelId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

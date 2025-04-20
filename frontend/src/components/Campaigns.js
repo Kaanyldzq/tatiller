@@ -10,6 +10,7 @@ import {
   Chip,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../config';
 
 function Campaigns() {
   const [campaigns, setCampaigns] = useState([]);
@@ -18,23 +19,24 @@ function Campaigns() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const fetchCampaigns = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`${API_BASE_URL}/campaigns`);
+        if (!response.ok) {
+          throw new Error('Kampanyalar yüklenirken bir hata oluştu');
+        }
+        const data = await response.json();
+        setCampaigns(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchCampaigns();
   }, []);
-
-  const fetchCampaigns = async () => {
-    try {
-      const response = await fetch('http://localhost:5002/api/campaigns');
-      if (!response.ok) {
-        throw new Error('Kampanyalar yüklenirken bir hata oluştu');
-      }
-      const data = await response.json();
-      setCampaigns(data);
-      setLoading(false);
-    } catch (err) {
-      setError(err.message);
-      setLoading(false);
-    }
-  };
 
   const handleCampaignClick = (hotelId) => {
     navigate(`/hotels/${hotelId}`);
